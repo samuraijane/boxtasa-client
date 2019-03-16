@@ -1,3 +1,5 @@
-<p>
-  code-list works!
-</p>
+<ul class="codes">
+  <li *ngFor="let code of codes" (click)="selectCode(code)">
+    <div class="title">{{code.title}}</div>
+  </li>
+</ul>
