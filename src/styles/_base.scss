@@ -1,0 +1,33 @@
+@import '_theme';
+//----------------------------------------------------------------------------
+//  HTML
+//----------------------------------------------------------------------------
+html {
+  color: $darkGray;
+  font-family: $bodyFont;
+  font-weight: 100;
+}
+
+
+//----------------------------------------------------------------------------
+//  Headings
+//----------------------------------------------------------------------------
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h3 {
+  border-bottom: 1px solid white;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  @include responsive(500px) {
+    margin-bottom: 14px;
+    padding-bottom: 4px;
+  }
+}

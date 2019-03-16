@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+// -----------------------------------------------------------------------------
+//  Import Stylesheet Includes
+// -----------------------------------------------------------------------------
+// do not import any stylesheets with variables as they will fail
+// parent stylesheets with variables (e.g. _theme) must be imported with @import syntax in the child stylesheet
+@import "./styles/_reset";
+@import "./styles/_base";
+@import "./styles/_layout";
+@import "./styles/_vendor";
+@import "./styles/_zasu";
