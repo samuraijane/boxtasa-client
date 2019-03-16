@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { Code } from '../interfaces';
 
 @Component({
   selector: 'app-code-detail',
@@ -11,9 +10,9 @@ export class CodeDetailComponent implements OnInit {
 
   constructor() { }
 
-  data: Code;
+  data;  // TODO add type via interface
 
-  @Input() receiveDetailsBind: Code;
+  @Input() receiveDetailsBind;  // TODO use interface type
   @Output() cancelDetailsBind = new EventEmitter<string>();
 
   ngOnInit() {
