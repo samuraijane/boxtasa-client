@@ -29,7 +29,7 @@ speed-measure-plugin.json
 !.vscode/extensions.json
 .history/*
 
-# misc
+# Misc
 /.sass-cache
 /connect.lock
 /coverage
@@ -42,3 +42,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom
+src/mocks
