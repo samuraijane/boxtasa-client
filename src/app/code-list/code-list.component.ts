@@ -1,17 +1,42 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import * as Data from './../../mocks/codes.json';
+import { Subject } from 'rxjs';
+import { FetchCodesService } from './../fetch-codes.service';
 
 @Component({
   selector: 'app-code-list',
   templateUrl: './code-list.component.html',
-  styleUrls: ['./code-list.component.scss']
+  styleUrls: ['./code-list.component.scss'],
+  providers: [FetchCodesService]
 })
 export class CodeListComponent implements OnInit {
+  
+  _listFilter: string;
 
-  constructor(public breakpointObserver: BreakpointObserver) { }
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredCodes = this.listFilter ? this.performFilter(this.listFilter) : this.codes;
+  }
 
-  ngOnInit() {
+  performFilter(filterBy: string) {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.codes.filter((code) => {
+      let value;
+      code.sampleOrganizations.forEach((item, index) => {
+        if(item.indexOf(filterBy) !== -1) {
+          value = item.toLocaleLowerCase().indexOf(filterBy) !== -1;
+        }
+      })
+      return value;
+    });
+  }
+
+  constructor(private fetchCodesService: FetchCodesService, public breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit(): void {
     this.breakpointObserver
     .observe(['(min-width: 500px)'])
     .subscribe((state: BreakpointState) => {
@@ -21,6 +46,15 @@ export class CodeListComponent implements OnInit {
         this.viewport500 = false;
       }
     });
+    
+    this.fetchCodesService.search()
+    .subscribe(
+      results => {
+        this.codes = results.codes;
+        this.filteredCodes = this.codes;
+      },
+      error => this.errorMessage = <any>error
+    );
   }
 
   @Output() broadcastDetailsBind = new EventEmitter<string>();
@@ -31,6 +65,8 @@ export class CodeListComponent implements OnInit {
     this.broadcastDetailsBind.emit(code);
   }
 
-  codes = Data.codes;
+  codes = [];
+  filteredCodes = [];
+  errorMessage: string;
 
 }

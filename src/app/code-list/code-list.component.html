@@ -1,5 +1,7 @@
+<input [(ngModel)]="listFilter" placeholder="search">
+
 <ul class="codes">
-  <li *ngFor="let code of codes" (click)="selectCode(code)">
+  <li *ngFor="let code of filteredCodes" (click)="selectCode(code)">
     <div class="title">{{code.title}}</div>
   </li>
 </ul>
