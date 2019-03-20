@@ -7,13 +7,17 @@ import { map, debounceTime, switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FetchCodesService {
-  baseUrl: string = 'http://localhost:4200/mocks/codes.json';
-  
+  // TODO consider replacing this with an injector token (see https://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html)
+  // baseUrl: string = 'http://localhost:3001';
+  baseUrl: string = 'http://agile-basin-38660.herokuapp.com/codes';
+
   constructor(private http: Http) { }
-  
+
   search() {
     return this.http
       .get(`${this.baseUrl}`)
-      .pipe(map(res => res.json()));
+      .pipe(map(res => {
+        return res.json();
+      }));
   }
 }
