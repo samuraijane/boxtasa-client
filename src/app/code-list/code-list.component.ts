@@ -10,7 +10,7 @@ import { FetchCodesService } from './../fetch-codes.service';
   providers: [FetchCodesService]
 })
 export class CodeListComponent implements OnInit {
-  
+
   _listFilter: string;
 
   get listFilter(): string {
@@ -26,7 +26,7 @@ export class CodeListComponent implements OnInit {
     return this.codes.filter((code) => {
       let value;
       code.sampleOrganizations.forEach((item, index) => {
-        if(item.indexOf(filterBy) !== -1) {
+        if(item.toLocaleLowerCase().indexOf(filterBy) !== -1) {
           value = item.toLocaleLowerCase().indexOf(filterBy) !== -1;
         }
       })
@@ -46,7 +46,7 @@ export class CodeListComponent implements OnInit {
         this.viewport500 = false;
       }
     });
-    
+
     this.fetchCodesService.search()
     .subscribe(
       results => {
