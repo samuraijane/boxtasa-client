@@ -8,7 +8,7 @@ import { map, debounceTime, switchMap } from 'rxjs/operators';
 })
 export class FetchCodesService {
   // TODO consider replacing this with an injector token (see https://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html)
-  // baseUrl: string = 'http://localhost:3001';
+  // baseUrl: string = 'http://localhost:3001/codes';
   baseUrl: string = 'http://agile-basin-38660.herokuapp.com/codes';
 
   constructor(private http: Http) { }
