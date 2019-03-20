@@ -25,7 +25,7 @@ export class CodeListComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.codes.filter((code) => {
       let value;
-      code.sampleOrganizations.forEach((item, index) => {
+      code.sampleNames.forEach((item, index) => {
         if(item.toLocaleLowerCase().indexOf(filterBy) !== -1) {
           value = item.toLocaleLowerCase().indexOf(filterBy) !== -1;
         }
@@ -50,7 +50,7 @@ export class CodeListComponent implements OnInit {
     this.fetchCodesService.search()
     .subscribe(
       results => {
-        this.codes = results.codes;
+        this.codes = results;
         this.filteredCodes = this.codes;
       },
       error => this.errorMessage = <any>error
