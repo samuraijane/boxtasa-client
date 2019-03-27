@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Code } from './../interfaces';
 import { DetailsService } from './../details.service';
 
 @Component({
