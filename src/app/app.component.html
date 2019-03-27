@@ -1,7 +1,6 @@
-<div class="y-outerwrap">
+<div class="y-wrap">
   <h1 class="big-heading">BoxTasa</h1>
   <div class="y-innerwrap">
-    <app-code-list (broadcastDetailsBind)="toggle($event)"></app-code-list>
-    <app-code-detail class="code-modal" [receiveDetailsBind]="selectedCode" (cancelDetailsBind)="toggle(null)" *ngIf="selectedCode"></app-code-detail>
+    <app-code-list></app-code-list>
   </div>
 </div>

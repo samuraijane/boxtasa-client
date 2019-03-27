@@ -17,9 +17,4 @@ export class AppComponent implements OnInit {
     }
   }
 
-  selectedCode: string = null;
-  toggle = (code) => {
-    this.selectedCode = code;
-  }
-
 }
