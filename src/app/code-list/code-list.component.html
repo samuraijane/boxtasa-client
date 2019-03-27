@@ -1,7 +1,11 @@
-<input [(ngModel)]="listFilter" placeholder="search">
+<div>
+  <input [(ngModel)]="listFilter" placeholder="search">
+</div>
 
 <ul class="codes">
   <li *ngFor="let code of filteredCodes" (click)="selectCode(code)">
     <div class="title">{{code.title}}</div>
   </li>
 </ul>
+
+<app-code-detail class="code-modal" *ngIf="codeDetails" [codeDetails]="codeDetails" ></app-code-detail>

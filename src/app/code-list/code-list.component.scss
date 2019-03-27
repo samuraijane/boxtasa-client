@@ -1,15 +1,25 @@
 @import '_theme';
 
+input {
+  padding: 4px 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.ninput {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .codes {
   align-content: flex-end;
   align-items: baseline;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 24px auto;
+  justify-content: space-between;
+  margin: 24px -4px;
   position: relative;
-  width: 90%;
 }
 
 li {

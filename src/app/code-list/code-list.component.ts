@@ -1,13 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
+
+import { Code } from './../interfaces';
+import { DetailsService } from './../details.service';
 import { FetchCodesService } from './../fetch-codes.service';
 
 @Component({
   selector: 'app-code-list',
   templateUrl: './code-list.component.html',
   styleUrls: ['./code-list.component.scss'],
-  providers: [FetchCodesService]
+  providers: [DetailsService, FetchCodesService]
 })
 export class CodeListComponent implements OnInit {
 
@@ -34,7 +37,11 @@ export class CodeListComponent implements OnInit {
     });
   }
 
-  constructor(private fetchCodesService: FetchCodesService, public breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private detailsService: DetailsService,
+    private fetchCodesService: FetchCodesService,
+    public breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -55,18 +62,24 @@ export class CodeListComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     );
-  }
 
-  @Output() broadcastDetailsBind = new EventEmitter<string>();
+    this.detailsService.detailsStream$.subscribe(detail => {
+      if(!detail) {
+        this.filteredCodes = this.codes;
+      }
+      this.codeDetails = detail;
+    });
+  }
 
   viewport500 = false;
 
   selectCode = (code) => {
-    this.broadcastDetailsBind.emit(code);
+    this.detailsService.setDetails(code);
+    this.filteredCodes = [code];
   }
 
-  codes = [];
-  filteredCodes = [];
-  errorMessage: string;
-
+  codes: Array<Code> = [];
+  codeDetails: Code;
+  errorMessage: string = '';
+  filteredCodes: Array<Code> = [];
 }
