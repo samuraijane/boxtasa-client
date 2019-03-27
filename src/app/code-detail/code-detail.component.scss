@@ -6,15 +6,11 @@
 
 .code-modal {
   background: $modal;
-  border: 1px solid $lightGray;
   color: white;
-  height: 100%;
-  left: 5%;
+  display: block;
+  margin-top: -27px;
   padding: 40px 14px;
-  position: absolute;
-  top: 0;
-  width: 90%;
-  z-index: 10;
+  position: relative;
   @include responsive(500px) {
     font-size: 2rem;
     padding: 80px 40px;

@@ -1,10 +1,8 @@
-<div app-scroll-lock="lock-scroll" to="body">
-  <h3>{{data.summary}}</h3>
-  <div class="cancel" (click)="cancelModal()"></div>
-  <ul class="subs">
-    <li *ngFor="let sign of data.subs">
-      <div class="sign">{{sign.sign}}</div>
-      <div class="meaning">{{sign.meaning}}</div>
-    </li>
-  </ul>
-</div>
+<h3>{{code.summary}}</h3>
+<div class="cancel" (click)="cancelModal()"></div>
+<ul class="subs">
+  <li *ngFor="let sub of code.subs">
+    <div class="sign">{{sub.sign}}</div>
+    <div class="meaning">{{sub.meaning}}</div>
+  </li>
+</ul>

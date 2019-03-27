@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { DetailsService } from './../details.service';
 
 @Component({
   selector: 'app-code-detail',
@@ -8,19 +9,18 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 })
 export class CodeDetailComponent implements OnInit {
 
-  constructor() { }
-
-  data;  // TODO add type via interface
-
-  @Input() receiveDetailsBind;  // TODO use interface type
-  @Output() cancelDetailsBind = new EventEmitter<string>();
+  constructor(private detailsService: DetailsService) {}
 
   ngOnInit() {
-    this.data = this.receiveDetailsBind;
+    this.code = this.codeDetails;
   }
 
-  cancelModal = () => {
-    this.cancelDetailsBind.emit(null);
+  code: Code;
+
+  @Input() codeDetails: Code
+
+  cancelModal() {
+    this.detailsService.cancelDetails();
   }
 
 }
