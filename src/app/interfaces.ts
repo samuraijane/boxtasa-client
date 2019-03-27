@@ -1,6 +1,15 @@
-namespace CodeModel {
+// namespace CodeModel {
   export interface Code {
-    summary: string,
-    subs: Array<string>
-  }  
-}
+    description: string;
+    keywords: Array<string>;
+    sampleNames: Array<string>;
+    summary: string;
+    subs: Array<Sub>;
+    title: string;
+  }
+
+  export interface Sub {
+    meaning: string;
+    sign: string;
+  }
+// }
