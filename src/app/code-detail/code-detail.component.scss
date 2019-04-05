@@ -1,6 +1,10 @@
 @import '_theme';
 
-.summary {
+.container { //TODO find a better name
+  margin-bottom: 16px;
+}
+
+.description {
   font-size: 0.875rem;
 }
 
@@ -36,6 +40,7 @@
 }
 
 .subs {
+  margin-top: 20px;
   padding: 12px 0 12px 0;
 }
 

@@ -1,8 +1,12 @@
 <h3>{{code.summary}}</h3>
+<div class="description">{{code.description}}</div>
 <div class="cancel" (click)="cancelModal()"></div>
 <ul class="subs">
   <li *ngFor="let sub of code.subs">
     <div class="sign">{{sub.sign}}</div>
-    <div class="meaning">{{sub.meaning}}</div>
+    <div class="container">
+      <div class="meaning">{{sub.meaning}}</div>
+      <div class="description">{{sub.description}}</div>
+    </div>
   </li>
 </ul>
